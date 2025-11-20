@@ -141,9 +141,68 @@ sorting=ynt
 
 \subsection{Background: Infinitary Computation}
 
+\begin{frame}{G\"{o}del's Informal Proposition}
+\pause{}
+\begin{itemize}
+    \item In an essay G\"{o}del wrote in 1958 (but only published posthumously) \cite{godelcw2}, he criticised Hilbert's choice of ``intuitively clear'' notions meant to make up the bedrock of classical mathematics.
+    \pause{}
+    \item He lamented that ``the domain of `finitary mathematics''' is unnaturally restrictive.
+    \pause{}
+    \item In the same work, G\"{o}del informally described a notion of infinitary computation built inductively from natural numbers.
+    \pause{}
+    \item He called this notion \textit{computable functions of finite type}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{More Formal and Explicit Conceptions}
+\pause{}
+\begin{itemize}
+    \item The eponymous Blum-Shub-Smale machines \cite{bss}, born from the study of dynamical systems. 
+    \pause{}
+    \item Infinite-time Turing machines \cite{ittm} by Hamkins and Lewis, motivated by natural philosophical questions.
+    \pause{}
+    \item More recently, MS-machines \cite{yangyue} by Yang \textit{et al}.
+\end{itemize}
+\end{frame}
+
 \subsection[Background: \textit{Formulas as Programs}]{Background: Formulas as Programs}
 
+\begin{frame}{In Classical Computability Theory}
+\pause{}
+\begin{itemize}
+    \item ``A program is a formula (of a particular form)'' --- an oft-repeated slogan. 
+    \pause{}
+    \item An oracle machine can functionally be represented as a sufficiently simple parametrised formula in the language of arithmetic.
+    \pause{}
+    \item This is a philosophical upshot of relating the arithmetical hierarchy to certain ideals of the Turing degrees. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Implicit Conceptions of Infinitary Computation}
+\pause{}
+\begin{itemize}
+    \item $\alpha$-recursion theory, born from ideas by Takeuti \cite{takeuti}, Kreisel and Sacks \cite{kreiselsacks} and some others, in the 1960s. 
+    \pause{}
+    \item $E$-recursion theory, formulated by Normann \cite{normann} in the 1970s.
+    \pause{}
+    \item These are implicit models of computation because they define what it means to be (relatively) computable without explicitly defining what a computation entails.
+    \pause{}
+    \item They relate computability to definability by a certain class of formulas, over a specific domain.
+\end{itemize}
+\end{frame}
+
 \subsection{Overview}
+
+\begin{frame}{In Greater Generality...}
+\pause{}
+\begin{itemize}
+    \item Relative computability is but a form of parametrised definability over some structure.
+    \pause{}
+    \item Vanilla computability is a special case whereby the parameter in question contains the least amount of information (e.g. using the empty set as parameter).
+    \pause{}
+    \item From a set-theoretic perspective, computation can thus be thought of as procedural set (even class) generation over a possibly enriched universe of set theory.
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Overview Chart}
 \begin{figure}[!htp]
@@ -583,9 +642,9 @@ $\mathsf{\Pi^M_{n+1}} \leq^M \mathsf{\Sigma^M_n}$ for all $1 \leq n < \omega$.
 \end{frame}
 
 \section*{}
-\begin{frame}{References}
-\printbibliography[heading=none]
-    
+
+\begin{frame}[allowframebreaks]{References}
+\printbibliography[heading=none] 
 \end{frame}
 
 \section*{}

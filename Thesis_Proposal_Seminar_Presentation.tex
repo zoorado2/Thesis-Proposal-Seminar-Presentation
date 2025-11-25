@@ -157,9 +157,9 @@ sorting=ynt
 \begin{frame}{More Formal and Explicit Conceptions}
 \pause{}
 \begin{itemize}
-    \item The eponymous Blum-Shub-Smale machines \cite{bss}, born from the study of dynamical systems. 
+    \item The eponymous Blum-Shub-Smale machines (BSSMs) \cite{bss}, born from the study of dynamical systems. 
     \pause{}
-    \item Infinite-time Turing machines \cite{ittm} by Hamkins and Lewis, motivated by natural philosophical questions.
+    \item Infinite-time Turing machines (ITTMs) \cite{ittm} by Hamkins and Lewis, motivated by natural philosophical questions.
     \pause{}
     \item More recently, MS-machines \cite{yangyue} by Yang \textit{et al}.
 \end{itemize}
@@ -212,20 +212,311 @@ sorting=ynt
 \end{figure}
 \end{frame}
 
+\begin{frame}{Today's Focus}
+\begin{figure}[!htp]
+    \centering
+    \centerline{\includegraphics[width=\textwidth]{Overview_Chart_Presentation2.png}}
+    \label{overview2}
+\end{figure}
+\end{frame}
+
 \section[Generalised Computation Within $V$]{Generalised Computation Within V}
 
-\subsection{Generalised Sequential Algorithms}
+\subsection{Sequential Algorithms}
 
-\begin{frame}{Upshot}
+\begin{frame}{Higher-Level Descriptions}
 \pause{}
 \begin{itemize}
-    \item All reasonable transfinite abstract algorithms are expressible as GSeqAPs. 
+    \item The explicit models of computation mentioned so far (BSSMs, ITTMs, etc.) are rather low-level and relatively concrete.
     \pause{}
-    \item Here \textit{reasonable} means satisfying the boundedness and locality conditions.
+    \item Computer scientists were interested in more inclusive descriptions of algorithms.
+    \pause{}
+    \item We want to be able to describe programs in pseudocode, instead of being bound to a fixed programming language. 
+    \pause{}
+    \item But what are the confines of pseudocode? 
+    \pause{}
+    \item To formally answer this question, we need to define things at a higher-level of abstraction.
 \end{itemize}
 \end{frame}
 
-\subsection{Comparisons with Other Notions}
+\begin{frame}{Higher-Level Descriptions}
+\pause{}
+\begin{itemize}
+    \item Moschovakis came up with a theory of recursors in an attempt to answer what it means for two programs to be equivalent.
+    \pause{}
+    \item Gurevich gave axioms (postulates) that a representation of a program should satisfy.
+    \pause{}
+    \item Gurevich calls any such representation an \textit{algorithm}. 
+    \pause{}
+    \item His most basic set of axioms classify precisely the \textit{sequential algorithms}. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sequential Algorithm: Definition}
+\pause{}
+Gurevich's formulation involves proper classes, but it can be adapted to avoid size issues.
+\pause{}
+\begin{definition}
+    \pause{}
+    \begin{itemize}
+        \item A \textit{sequential algorithm} comprises a set of \textit{states}, including \textit{initial states}, and a \textit{transition function} mapping one state to another.
+        \pause{}
+        \item Every state in a sequential algorithm is a first-order structure with the same base set and finite signature.
+        \pause{}
+        \item In identifying the next state, the transition function determines changes to the current state based on finite information about the current state (\textit{bounded exploration}).
+    \end{itemize} 
+\end{definition}
+\end{frame}
+
+\begin{frame}{Generality and Intuitiveness}
+\pause{}
+\begin{itemize}
+    \item States are analogous to Turing machine configurations.
+    \pause{}
+    \item An initial state corresponds to a starting configuration upon receiving an input.
+    \pause{}
+    \item A final state corresponds to an end configuration from which the output can be read.
+    \pause{}
+    \item A transition function parallels that of a Turing machine: it codes how the machine behaves.
+    \pause{}
+    \item Incidentally, this general framework of 
+    \begin{equation*}
+        \text{algorithm} = \text{state space } + \text{ transition function}
+    \end{equation*}
+    is also adopted in recursor theory; Moschovakis calls such a representation an iterator.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{To the Infinite}
+\pause{}
+\begin{itemize}
+    \item For an abstract computation model, sequential algorithms are simple to describe and very inclusive.
+    \pause{}
+    \item It seems like the go-to candidate for generalisation, if we want an flexible and high-level model of infinitary computation.
+    \pause{}
+    \item Two principles, isolated by Sieg in \cite{sieg} as integral to classical models of computation, guide our search for the ``correct'' infinitary version of sequential algorithms. 
+    \pause{}
+    \begin{itemize}
+        \item \textit{Boundedness}: ``there is a fixed finite bound on the number of configurations a computor can immediately recognise''.
+        \pause{}
+        \item \textit{Locality}: ``a computor can change only immediately recognisable (sub)configurations''.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Generalised Sequential Algorithms}
+
+\begin{frame}{Redefining a Transition Function}
+\pause{}
+\begin{itemize}
+    \item We want to talk about local features between two states.
+    \pause{}
+    \item Since they are first-order structures with the same signature and base set, local features are synonymous with properties given through the truth predicate $\models$.
+    \pause{}
+    \item We modify the predicate into $\models_2$ so that we can talk about any two such structures simultaneously.
+    \pause{}
+    \item Every \textit{generalised sequential algorithm} (\textit{GSeqA}) has its transitions governed by a transition formula: \pause{}transition from $s_1$ to $s_2$ iff $(s_1, s_2) \models_2 \phi$ for transition formula $\phi$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Redefining a Transition Function}
+\pause{}
+\begin{itemize}
+    \item Originally, bounded exploration is defined by quantifying over all states of a sequential algorithm.
+    \pause{}
+    \item It suffices but is often not easy to verify.
+    \pause{}
+    \item By restricting transition formulas, we can formalise bounded exploration locally.
+    \pause{}
+    \item The said restrictions are facilitated by more fundamental design decisions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ordinal Base Sets}
+\pause{}
+\begin{itemize}
+    \item To shift the burden of programming to the definition of the transition formula, we streamline the definitions of other components of a GSeqA.
+    \pause{}
+    \item We specify the base set of any state to be a limit ordinal.
+    \pause{}
+    \item More precisely, every GSeqA $\mathfrak{M}$ has an associated limit ordinal $\kappa(\mathfrak{M})$.
+    \pause{}
+    \item Every state of a GSeqA $\mathfrak{M}$ is an expansion of the structure $(\kappa(\mathfrak{M}); \in)$ over a fixed signature $\sigma(\mathfrak{M})$ associated with $\mathfrak{M}$.
+    \pause{}
+    \item This simplification is inspired by the fact that every set can be coded as a set of ordinals.
+    \pause{}
+    \item The base set being an ordinal also fits the basic intuition of sequential memory when one thinks about computation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ordinal Parameters}
+\pause{}
+\begin{itemize}
+    \item For technical purposes, we focus on the subclass of GSeqAs with ordinal parameters, called \textit{generalised sequential algorithm with parameters} (\textit{GSeqAP}s).
+    \pause{}
+    \item Every GSeqAP $\mathfrak{M}$ has an associated finite set $\mathrm{p}(\mathfrak{M}) \subset \kappa(\mathfrak{M})$.
+    \pause{}
+    \item Every state of a GSeqAP $\mathfrak{M}$ is an expansion of the structure $(\kappa(\mathfrak{M}); \in, \bar{\mathrm{p}}(\mathfrak{M}))$ over $\sigma(\mathfrak{M})$, where $\bar{\mathrm{p}}(\mathfrak{M})$ is $\mathrm{p}(\mathfrak{M})$ ordered by $\in$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Input/Output Paradigm}
+\pause{}
+\begin{itemize}
+    \item The interpretation of ``computing $B$ from $A$'' is implicit in a sequential algorithm.
+    \pause{}
+    \item We strive to make it explicit.
+    \pause{}
+    \item Every state interprets unary relation symbols $\mathrm{In}$ and $\mathrm{Out}$, representing the input and output tapes respectively.
+    \pause{}
+    \item We take $\in$, $\mathrm{In}$, $\mathrm{Out}$ and the ordinal parameters  in $\mathrm{p}(\mathfrak{M})$ to be primitives, whereas other symbols in $\sigma(\mathfrak{M})$ are considered \textit{declared variables} in the programming sense.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transition Formulas}
+\pause{}
+\begin{itemize}
+    \item Let $\mathfrak{M}$ be a GSeqAP.
+    \pause{}
+    \item For each declared variable $\ulcorner X \urcorner \in \sigma(\mathfrak{M})$, we associate it with a $\Delta_0$ formula $\phi^{\ulcorner X \urcorner}$ of some specific form over $\sigma(\mathfrak{M})$.
+    \pause{}
+    \item $\phi^{\ulcorner X \urcorner}$ specifies ``pointwise'' the next state's interpretation of $\ulcorner X \urcorner$ based on the current state's interpretation.
+    \pause{}
+    \item The transition formula $\phi^{\tau}_{\mathfrak{M}}$ of $\mathfrak{M}$ is then defined to be the conjunction of the $\phi^{\ulcorner X \urcorner}$s.
+    \pause{}
+    \item This definition obeys a parallelised, infinitary version of Sieg's principles.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Initial States}
+\pause{}
+\begin{itemize}
+    \item We are left we defining what it means to be an initial state of a GSeqAP $\mathfrak{M}$.
+    \pause{}
+    \item For each declared variable $\ulcorner X \urcorner \in \sigma(\mathfrak{M})$, we associate it with a $\Delta_0$ formula $\psi^{\ulcorner X \urcorner}$ of some specific form over $\in$.
+    \pause{}
+    \item $\psi^{\ulcorner X \urcorner}$ ought to specify ``pointwise'' the unique starting behaviour of $\ulcorner X \urcorner$.
+    \pause{}
+    \item Then $\phi^{d}_{\mathfrak{M}}$ of $\mathfrak{M}$, defined to be the conjunction of the $\psi^{\ulcorner X \urcorner}$s, determines the starting behaviour of all declared variables.
+    \pause{}
+    \item If $A \subset \kappa(\mathfrak{M})$, then there is a unique initial state $s$ of $\mathfrak{M}$ such that $s$ interprets $\mathrm{In}$ as $A$, $\mathrm{Out}$ as $\emptyset$ and $s \models \phi^{d}_{\mathfrak{M}}$ of $\mathfrak{M}$.
+    \pause{}
+    \item These are exactly all the initial states.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{GSeqAP: Definition}
+\pause{}
+\begin{itemize}
+    \item A GSeqAP $\mathfrak{M}$ is a tuple $$(\kappa(\mathfrak{M}), \sigma(\mathfrak{M}), \mathrm{p}(\mathfrak{M}), \phi^{\tau}_{\mathfrak{M}}, \phi^d_{\mathfrak{M}})$$ satisfying the properties we have mentioned.
+    \pause{}
+    \item Let $S(\mathfrak{M})$ denote the set of states of $\mathfrak{M}$, derivable from $\kappa(\mathfrak{M})$, $\sigma(\mathfrak{M})$ and $\mathrm{p}(\mathfrak{M})$. 
+    \pause{}
+    \item The transition (partial) function $\tau_{\mathfrak{M}}$ of $\mathfrak{M}$ can then be derived from $S(\mathfrak{M})$ and $\phi^{\tau}_{\mathfrak{M}}$ as follows:
+    \pause{}
+    \begin{align*}
+        \tau_{\mathfrak{M}} := \{(s_0, s_1) \in S(\mathfrak{M})^2 : \ & \exists ! x \in S(\mathfrak{M}) \ ((s_0, x) \models_2 \phi^{\tau}_{\mathfrak{M}}) \\ 
+        & \wedge (s_0, s_1) \models_2 \phi^{\tau}_{\mathfrak{M}}\} \text{.}
+    \end{align*}
+    \pause{}
+    \vspace{-\baselineskip}
+    \item $S(\mathfrak{M})$ and $\tau_{\mathfrak{M}}$ are absolute for transitive models of (any sufficiently strong) set theory.
+\end{itemize}
+\end{frame}
+
+\subsection{Relative Computability}
+
+\begin{frame}{A Call for Transfinite Runs}
+\pause{}
+\begin{itemize}
+    \item \textit{Runs} (or \textit{computations}) are presumed to be finite in a sequential algorithm.
+    \pause{}
+    \item Even with our restrictions, one can easily compress a finite run into a single step. 
+    \pause{}
+    \item If we allow transfinite inputs and outputs, it makes sense to allow transfinite runs.
+    \pause{}
+    \item The transition formula dictates what happens at successor time-steps; what about limit time-steps?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Taking Limits}
+\pause{}
+\begin{itemize}
+    \item We want the definition of a limit state to depend locally on the states that come before it in a run.
+    \pause{}
+    \item This can again be formalised using the first-order truth predicate in a ``pointwise'' $\Delta_0$ way.
+    \pause{}
+    \item Under this constraint, we show that with enough space (increasing $\kappa(\mathfrak{M})$ if necessary), taking limit/limsup/liminf wherever possible ``pointwise'' can simulate all other definitions of a limit state.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Terminating Runs}
+\pause{}
+\begin{definition}
+A \textit{terminating run} of a GSeqAP $\mathfrak{M}$ is a function from some successor ordinal $\delta$ into $S(\mathfrak{M})$ such that
+\pause{}
+\begin{itemize}
+    \item $Sq(0)$ is an initial state,
+    \pause{}
+    \item $Sq(\alpha + 1) = \tau_{\mathfrak{M}}(Sq(\alpha)) \neq Sq(\alpha)$ for all $\alpha < \delta - 1$, 
+    \pause{}
+    \item $Sq(\gamma)$ is obtained from $Sq \restriction \gamma$ ``pointwise'' by taking liminf if possible and resetting to $0$ otherwise, for limit ordinals $\gamma < \delta$, and
+    \pause{}
+    \item $\tau_{\mathfrak{M}}(Sq(\delta - 1)) = Sq(\delta - 1)$.
+\end{itemize}
+\pause{}
+We call $\delta$ the \textit{length} of $Sq$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Relative Computability Relations}
+\pause{}
+\begin{itemize}
+    \item A GSeqAP computes $B$ from $A$ iff it has a run that starts with $\mathrm{In}$ interpreted as $A$ and terminates with $\mathrm{Out}$ interpreted as $B$.
+    \pause{}
+    \item $B \leq^P_{\kappa} A$ iff some GSeqAP $\mathfrak{M}$ with $\kappa(\mathfrak{M}) = \kappa$ computes $B$ from $A$.
+    \pause{}
+    \item $B \leq^{P, s}_{\kappa} A$ iff some GSeqAP $\mathfrak{M}$ with $\kappa(\mathfrak{M}) = \kappa$ computes $B$ from $A$ in a terminating run of length $< \kappa$.
+    \pause{}
+    \item $B \leq^P A$ iff $B \leq^P_{\kappa} A$ for some limit ordinal $\kappa$.
+    \pause{}
+    \item If $R$ is one of the above relations, then
+    \pause{}
+    \begin{itemize}
+        \item $R$ is transitive,
+        \pause{}
+        \item $R$ sidesteps the need for an oracle-analogue, and
+        \pause{}
+        \item a set $x$ being $R$\textit{-computable} means $x \ R \ \emptyset$.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Degrees of Constructibility}
+\pause{}
+\begin{itemize}
+    \item We show that $B \leq^P A$ iff $B \in L[A]$, where $L[A]$ is G\"{o}del's constructible universe relative to $A$.
+    \pause{}
+    \item This means the degrees of relative computability derived from $\leq^P$ are exactly the degrees of constructibility.
+    \pause{}
+    \item The very restricted (at first glance) programming we allow in GSeqAPs actually has the full power of transfinite recursion.
+    \pause{}
+    \item In fact, the above is already true for the much lower-level $\alpha$-machines in Koepke's theory of $\alpha$-computability (see e.g. \cite{koepke2}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Relations $\leq^{P, s}_{\kappa}$ and $\leq^{P}_{\kappa}$}
+\pause{}
+\begin{itemize}
+    \item An ordinal $\kappa$ is \textit{admissible} iff $(L_{\kappa}; \in)$ is a model of Kripke-Platek set theory.
+    \pause{}
+    \item When $\kappa$ is admissible, $\leq^{P, s}_{\kappa}$ and $\leq^{P}_{\kappa}$ are both defined.
+    \pause{}
+    \item It can be proven that if $\kappa_1$ and $\kappa_2$ are admissible, $\kappa_1 < \kappa_2$ and $B \leq^{P}_{\kappa_1} A$ (resp. $B \leq^{P, s}_{\kappa_1} A$), then $B \leq^{P}_{\kappa_2} A$ (resp. $B \leq^{P, s}_{\kappa_2} A$).
+    \pause{}
+    \item In this case we call $\leq^{P}_{\kappa}$ (resp. $\leq^{P, s}_{\kappa}$) \textit{upward persistent}.
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Summary Table}
 \pause{}

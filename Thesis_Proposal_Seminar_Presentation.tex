@@ -904,7 +904,8 @@ $\mathsf{\Pi^M_{n+1}} \leq^M \mathsf{\Sigma^M_n}$ for all $1 \leq n < \omega$.
 \begin{itemize}
     \item There is an obvious and uniform way of representing any forcing notion $\mathbb{P}$ as a $\Pi_2$ TCI $\mathcal{T}(\mathbb{P})$.
     \pause{}
-    \item Thus set forcing, as a technique of accessing small extensions of $V$, can be represented by a local method definition, denoted $\mathsf{Fg}$.
+    \item Thus set forcing, as a technique of accessing small extensions of $V$, can be represented by the local method definition $$\mathsf{Fg} := \{\mathcal{T}(\mathbb{P}) : \mathbb{P} \text{ is a forcing notion}\} \text{.}$$
+    \vspace{-\baselineskip}
     \pause{}
     \item We want to see if $\mathsf{Fg}$ fits nicely in the local method hierarchy.
     \pause{}
@@ -947,7 +948,7 @@ $\mathsf{\Pi^M_{n+1}} \leq^M \mathsf{\Sigma^M_n}$ for all $1 \leq n < \omega$.
 \begin{frame}{Further Results}
 \pause{}
 \begin{theorem}[L.]
-Let $\emptyset \neq X \subset \mathbf{M}_{S}(V)$ be defined by $$X = \{V[x] : \text{``} x \text{ is a } Y \text{-generator''}\} \text{,}$$ \pause{}where ``$X$ is a $Y$-generator'' has a definition absolute for transitive models of $\mathsf{ZFC}$. \pause{}Moreover, assume there is a set $z \in V$ such that $$\emptyset \neq \{a \subset z : \text{``} a \text{ is a code of } x \text{''}\}$$ has a definition both uniform in $Y$-generators $x$ and absolute for for transitive models of $\mathsf{ZFC}$. \pause{}Then there is a forcing notion $\mathbb{P}$ for which $$\mathrm{Eval}^V(\mathcal{T}(\mathbb{P})) \subset X \text{.}$$
+Let $\emptyset \neq X \subset \mathbf{M}_{S}(V)$ be defined by $$X = \{V[x] : \text{``} x \text{ is a } Y \text{-generator''}\} \text{,}$$ \pause{}where ``$X$ is a $Y$-generator'' has a definition absolute for transitive models of $\mathsf{ZFC}$. \pause{}Moreover, assume there is a set $z \in V$ such that $$\emptyset \neq \{a \subset z : \text{``} a \text{ is a } Z \text{-code of } x \text{''}\}$$ has a definition both uniform in $Y$-generators $x$ and absolute for transitive models of $\mathsf{ZFC}$. \pause{}Then there is a forcing notion $\mathbb{P}$ for which $$\mathrm{Eval}^V(\mathcal{T}(\mathbb{P})) \subset X \text{.}$$
 \end{theorem}
 \end{frame}
 
@@ -958,6 +959,10 @@ Let $\emptyset \neq X \subset \mathbf{M}_{S}(V)$ be defined by $$X = \{V[x] : \t
     \pause{}
     \item As a result, the theorem can be interpreted thus: forcing is the most powerful means among all such means of defining classes of small extensions of $V$.
 \end{itemize}
+\pause{}
+\begin{corollary}
+For every TCI $\mathcal{T}$, $\{\mathcal{T}\} \leq^M \mathsf{Fg}$.
+\end{corollary}
 \end{frame}
 
 \begin{frame}{Some Open Questions}

@@ -928,6 +928,40 @@ $\mathsf{\Pi^M_{n+1}} \leq^M \mathsf{\Sigma^M_n}$ for all $1 \leq n < \omega$.
 \end{proof}
 \end{frame}
 
+\begin{frame}{A Complementary Theorem}
+\pause{}
+\begin{theorem}[L.]
+Let $\emptyset \neq X \subset \mathbf{M}_{S}(V)$ be defined by $$X = \{V[x] : \text{``} x \text{ is a } Y \text{-generator''}\} \text{,}$$ \pause{}where ``$X$ is a $Y$-generator'' has a sufficiently absolute definition. \pause{}Moreover, assume there is a set $z \in V$ such that $$\emptyset \neq \{a \subset z : \text{``} a \text{ is a } Z \text{-code of } x \text{''}\}$$ has a definition both uniform in $Y$-generators $x$ and absolute for outer models of $V$. \pause{}Then there is a forcing notion $\mathbb{P}$ for which $$\mathrm{Eval}^V(\mathcal{T}(\mathbb{P})) \subset X \text{.}$$
+\end{theorem}
+\end{frame}
+
+\begin{frame}{A Complementary Theorem}
+\pause{}
+\begin{itemize}
+    \item The hypotheses of the previous theorem are a conservative attempt at formalising what a definition of a class of small extensions of $V$ through their generators should entail, if the said definition depends locally on bounded amount of information in $V$.
+    \pause{}
+    \item As a result, the theorem can be interpreted thus: forcing is the most powerful means among all such means of defining classes of small extensions of $V$.
+\end{itemize}
+\pause{}
+\begin{corollary}
+For every TCI $\mathcal{T}$, $\{\mathcal{T}\} \leq^M \mathsf{Fg}$.
+\end{corollary}
+\end{frame}
+
+\begin{frame}{A Stronger Corollary}
+\pause{}
+\begin{corollary}
+Let $n < \omega$, $\Vec{y} \in V^n$, and $\varphi$ be a $(n + 1)$-ary $\Delta_1$ formula in the L\'{e}vy hierarchy.\pause{} Define 
+\begin{equation*}
+    U(\Vec{y}, \varphi) := \{V[x] : \exists x' \in V \ (x \subset x') \text{ and } \varphi (\Vec{y}, x) \} \text{.}\pause{}
+\end{equation*}
+If $U(\Vec{y}, \varphi) \neq \emptyset$, then there is a forcing notion $\mathbb{P} \in V$ for which
+\begin{equation*}
+    \mathrm{Eval}^V(\mathfrak{T}(\mathbb{P})) \subset X \text{.}
+\end{equation*}
+\end{corollary}
+\end{frame}
+
 \begin{frame}{Further Results}
 \pause{}
 \begin{itemize}
@@ -943,26 +977,6 @@ $\mathsf{\Pi^M_{n+1}} \leq^M \mathsf{\Sigma^M_n}$ for all $1 \leq n < \omega$.
         \item Essentially, we can define functions $F$ of low complexity taking these TCIs to reals such that every $F(\mathcal{T})$-$1$-generic real codes a model of $\mathcal{T}$.
     \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Further Results}
-\pause{}
-\begin{theorem}[L.]
-Let $\emptyset \neq X \subset \mathbf{M}_{S}(V)$ be defined by $$X = \{V[x] : \text{``} x \text{ is a } Y \text{-generator''}\} \text{,}$$ \pause{}where ``$X$ is a $Y$-generator'' has a sufficiently absolute definition. \pause{}Moreover, assume there is a set $z \in V$ such that $$\emptyset \neq \{a \subset z : \text{``} a \text{ is a } Z \text{-code of } x \text{''}\}$$ has a definition both uniform in $Y$-generators $x$ and absolute for outer models of $V$. \pause{}Then there is a forcing notion $\mathbb{P}$ for which $$\mathrm{Eval}^V(\mathcal{T}(\mathbb{P})) \subset X \text{.}$$
-\end{theorem}
-\end{frame}
-
-\begin{frame}{Further Results}
-\pause{}
-\begin{itemize}
-    \item The hypotheses of the previous theorem are a conservative attempt at formalising what a definition of a class of small extensions of $V$ through their generators should entail, if the said definition depends locally on bounded amount of information in $V$.
-    \pause{}
-    \item As a result, the theorem can be interpreted thus: forcing is the most powerful means among all such means of defining classes of small extensions of $V$.
-\end{itemize}
-\pause{}
-\begin{corollary}
-For every TCI $\mathcal{T}$, $\{\mathcal{T}\} \leq^M \mathsf{Fg}$.
-\end{corollary}
 \end{frame}
 
 \begin{frame}{Some Open Questions}

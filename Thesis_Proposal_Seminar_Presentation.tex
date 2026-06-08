@@ -965,6 +965,30 @@ If $U(\Vec{y}, \varphi) \neq \emptyset$, then there is a forcing notion $\mathbb
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Why Not (Yet) $\mathsf{\Sigma^M_2} \leq^M \mathsf{Fg}$?}
+\pause{}
+\begin{itemize}
+    \item The proofs of the previous theorem depends on the maximality principle in an essential manner.
+    \pause{}
+    \item There is no known way to circumvent that requirement even if we were to restrict the context to showing $\{\mathcal{T}\} \leq^M \mathsf{Fg}$ for $\mathcal{T} \in \mathsf{\Sigma^M_2}$.
+    \pause{}
+    \item On the other hand, having a definable version of the maximality principle on $\mathsf{\Sigma^M_2}$ that works in this restricted context is independent of $\mathsf{ZFC}$, by the next lemma.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why Not (Yet) $\mathsf{\Sigma^M_2} \leq^M \mathsf{Fg}$?}
+\pause{}
+\begin{lemma}[L.]
+Let $\lambda$ be an infinite cardinal, $1 \leq n < \omega$, and have $\Vdash^n_{Col(\omega, \lambda)}$ denote the restriction of $\Vdash_{Col(\omega, \lambda)}$ to $\Sigma_n$ sentences.\pause{} If for some $k < \omega$, there is a definable (with parameters) class function $F$ on $\mathsf{\Sigma^M_k}$ such that $ran(F) \subset V^{Col(\omega, \lambda)}$ and 
+\begin{equation*}
+    \forall \mathfrak{T} \in \mathsf{\Sigma^M_k} \ ((\Vdash^n_{Col(\omega, \lambda)} \exists \mathcal{M} \ (\text{``} \mathcal{M} \models^* \check{\mathfrak{T}} \text{''})) \implies \Vdash^n_{Col(\omega, \lambda)} \text{``} F(\mathfrak{T}) \models^* \check{\mathfrak{T}} \text{''}) \text{,}\pause{}
+\end{equation*}
+then there is a definable (with parameters) global choice function.
+\end{lemma}
+\pause{}
+We can force the non-existence of a definable (with parameters) global choice function over any CTM by adding proper class many Cohen reals.
+\end{frame}
+
 \begin{frame}{Further Results}
 \pause{}
 \begin{itemize}

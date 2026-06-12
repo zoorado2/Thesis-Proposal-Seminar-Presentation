@@ -948,18 +948,18 @@ For every TCI $\mathcal{T}$, $\{\mathcal{T}\} \leq^M \mathsf{Fg}$.
 \end{corollary}
 \end{frame}
 
-\begin{frame}{A Stronger Corollary}
+\begin{frame}{A Stronger Consequence}
 \pause{}
-\begin{corollary}
-Let $n < \omega$, $\Vec{y} \in V^n$, and $\varphi$ be a $(n + 1)$-ary $\Delta_1$ formula in the L\'{e}vy hierarchy.\pause{} Define 
+\begin{theorem}[L.]
+Let $n < \omega$, $\Vec{y} \in V^n$, and $\varphi$ be a $(n + 1)$-ary $\Sigma_1$ formula in the L\'{e}vy hierarchy.\pause{} Define 
 \begin{equation*}
-    U(\Vec{y}, \varphi) := \{V[x] : \exists x' \in V \ (x \subset x') \text{ and } \varphi (\Vec{y}, x) \} \text{.}\pause{}
+    U(\Vec{y}, \varphi) := \{W \in \mathbf{M}(V) : (W; \in) \models \exists x \ \varphi (\Vec{y}, x) \} \text{.}\pause{}
 \end{equation*}
 If $U(\Vec{y}, \varphi) \neq \emptyset$, then there is a forcing notion $\mathbb{P} \in V$ for which $\mathrm{Eval}^V(\mathfrak{T}(\mathbb{P})) \subset U(\Vec{y}, \varphi)$.
-\end{corollary}
+\end{theorem}
 \pause{}
 \begin{itemize}
-    \item Known methods of generating small extensions of a ground model are $\Delta_1$-definable with the ground model and its members as parameters.
+    \item Known methods of generating specific outer models of a ground model are $\Sigma_1$-definable with the ground model and its members as parameters.
     \pause{}
     \item If a method depends on bounded amount of information in the ground model, its definition should not require the ground model as a parameter.
 \end{itemize}
@@ -968,7 +968,7 @@ If $U(\Vec{y}, \varphi) \neq \emptyset$, then there is a forcing notion $\mathbb
 \begin{frame}{Why Not (Yet) $\mathsf{\Sigma^M_2} \leq^M \mathsf{Fg}$?}
 \pause{}
 \begin{itemize}
-    \item The proofs of the previous theorem depends on the maximality principle in an essential manner.
+    \item The proofs of the previous two theorems depend on the maximality principle in an essential manner.
     \pause{}
     \item There is no known way to circumvent that requirement even if we were to restrict the context to showing $\{\mathcal{T}\} \leq^M \mathsf{Fg}$ for $\mathcal{T} \in \mathsf{\Sigma^M_2}$.
     \pause{}

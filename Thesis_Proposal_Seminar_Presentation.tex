@@ -953,7 +953,7 @@ For every TCI $\mathcal{T}$, $\{\mathcal{T}\} \leq^M \mathsf{Fg}$.
 \begin{theorem}[L.]
 Let $n < \omega$, $\Vec{y} \in V^n$, and $\varphi$ be a $(n + 1)$-ary $\Sigma_1$ formula in the L\'{e}vy hierarchy.\pause{} Define 
 \begin{equation*}
-    U(\Vec{y}, \varphi) := \{W \in \mathbf{M}(V) : (W; \in) \models \exists x \ \varphi (\Vec{y}, x) \} \text{.}\pause{}
+    U(\Vec{y}, \varphi) := \{W \in \mathbf{M}(V) : \exists x \in W (W = V[x] \wedge (W; \in) \models \varphi (\Vec{y}, x))\} \text{.}\pause{}
 \end{equation*}
 If $U(\Vec{y}, \varphi) \neq \emptyset$, then there is a forcing notion $\mathbb{P} \in V$ for which $\mathrm{Eval}^V(\mathfrak{T}(\mathbb{P})) \subset U(\Vec{y}, \varphi)$.
 \end{theorem}
